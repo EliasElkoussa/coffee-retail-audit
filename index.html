@@ -54,6 +54,12 @@ main h2{font-size:32px;margin-bottom:8px}
 .sum li{background:var(--card);border:1px solid var(--line);border-inline-start:4px solid var(--bean);border-radius:8px;padding:14px 18px}
 .sum li strong{display:block;font-family:"Reem Kufi";font-size:19px;margin-bottom:2px}
 
+.flags{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.flags a{display:block;height:100%;background:var(--card);border:1px solid var(--line);border-top:5px solid #A8432A;border-radius:10px;padding:18px 20px;text-decoration:none;color:var(--roast)}
+.flags a:hover{border-color:#A8432A}
+.flags strong{display:block;font-family:"Reem Kufi";font-size:21px;line-height:1.25;margin-bottom:8px}
+@media (max-width:700px){.flags{grid-template-columns:1fr}}
+.keyline{margin-top:18px;font-size:15px;color:var(--muted);line-height:2}
 /* labels */
 .tag{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;border-radius:999px;padding:2px 10px;white-space:nowrap}
 .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
@@ -103,13 +109,13 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;paddin
   <p class="who">Digital Growth and User Experience Audit for <strong>Al Gahwa Al Arabiya</strong>, prepared by <strong>Elias Elkoussa</strong>, 4 November 2026</p>
   <h1 class="big"><span>10,540 sold.</span><span class="two">0 reviews.</span></h1>
   <p class="cap">That is Al Kaif Coffee on the store today. The demand is proven and the tracking is in place. What's missing is a storefront that turns that demand into measurable sales, in English and in Arabic.</p>
-  <div class="actions"><a class="btn primary" href="demo.html">Open the concept storefront</a><a class="btn ghost" href="#summary">Read the summary</a></div>
+  <div class="actions"><a class="btn primary" href="demo.html">Open the concept storefront</a><a class="btn ghost" href="#summary">See the four red flags</a></div>
 </div></header>
 
 <div class="layout">
 <aside>
   <nav aria-label="Sections">
-    <a href="#summary">Summary</a>
+    <a href="#summary">Red flags</a>
     <a href="#p1">1. Localization and SEO</a>
     <a href="#p2">2. Homepage and navigation</a>
     <a href="#p3">3. Mobile performance</a>
@@ -130,25 +136,15 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;paddin
 
 <main>
 <section id="summary">
-  <h2>Summary</h2>
-  <p class="lead">Six findings shape the plan. Each one is labelled so you can see what was observed and what is proposed.</p>
-  <div class="legend">
-    <span class="tag v">Verified</span><span>observed on the live site or in Google PageSpeed Insights on 4 Nov 2026</span>
-  </div>
-  <div class="legend">
-    <span class="tag h">Hypothesis</span><span>a position to test; no results are claimed</span>
-  </div>
-  <div class="legend">
-    <span class="tag x">To verify</span><span>needs store-admin or ad-account access</span>
-  </div>
-  <ul class="sum">
-    <li><strong>Demand is proven</strong>Core Arabic coffee products show between 9,441 and 10,540 units sold each on their product cards.</li>
-    <li><strong>The English storefront is half-built</strong>Menus, section headings and some products stay in Arabic on the English site, and several product records are crossed.</li>
-    <li><strong>The homepage is a catalogue, not a funnel</strong>218 product links, with the same items repeated across sections.</li>
-    <li><strong>Trust is under-signalled</strong>53 "No reviews" labels on the homepage, and a shipping page with no cities or charges.</li>
-    <li><strong>Tracking is installed but not proven clean</strong>GA4, Tag Manager, Meta, TikTok and Snapchat tags are all on the site, so the priority is data quality. Red flag: an event called <code>ads_conversion</code> fires when a shopper simply opens a product page. If Google Ads counts it as a conversion, reported return on ad spend is inflated and bidding learns from browsers, not buyers.</li>
-    <li><strong>Speed is a risk, not the headline problem</strong>Real visitors pass Google's Core Web Vitals on mobile, but the site scores 31/100 in Google's simulated mobile test. New visitors from paid campaigns may get the slower experience.</li>
+  <h2>Four red flags</h2>
+  <p class="lead">Each of these costs sales or ad budget today, and each can be fixed before any new media spend.</p>
+  <ul class="flags">
+    <li><a href="#p1"><strong>The English storefront is half-built</strong>9 of 12 menu items, most homepage headings and some products stay in Arabic on the English site. Every English ad click lands on a page that only half-matches the ad.</a></li>
+    <li><a href="#p4"><strong>A conversion tag fires on a simple product view</strong>A Google Analytics event called <code>ads_conversion</code> fires when a shopper only opens a product page. If Google Ads counts it as a conversion, reported return on ad spend is inflated and bidding learns from browsers, not buyers.</a></li>
+    <li><a href="#p1"><strong>Product records are crossed</strong>One page's web address names Al Dhafra Fort Blend, its heading says Nicaragua Momotombo, and its Google title says Gedeb Halo Hartome. Google and the ad catalogues read it as the wrong product.</a></li>
+    <li><a href="#p3"><strong>The site scores 31/100 in Google's mobile test</strong>Real visitors pass Google's Core Web Vitals today, but the simulated mobile test takes 12.4 seconds to show the main content. New visitors from paid campaigns may get that slower experience.</a></li>
   </ul>
+  <p class="keyline">Findings below are labelled <span class="tag v">Verified</span> observed on 4 Nov 2026, <span class="tag h">Hypothesis</span> a position to test, or <span class="tag x">To verify</span> needs store or ad-account access.</p>
 </section>
 
 <section id="p1">
@@ -370,7 +366,7 @@ btns.forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.items li').forEach(li=>li.classList.toggle('hide',f!=='all'&&li.dataset.k!==f));
   if(f!=='all')document.querySelectorAll('details.pillar').forEach(d=>d.open=true);
 }));
-document.querySelectorAll('aside nav a').forEach(a=>a.addEventListener('click',()=>{
+document.querySelectorAll('aside nav a, .flags a').forEach(a=>a.addEventListener('click',()=>{
   const d=document.querySelector(a.getAttribute('href')+' details'); if(d)d.open=true;
 }));
 </script>
