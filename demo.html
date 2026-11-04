@@ -388,7 +388,7 @@ function product(){
   </div>`;
 }
 
-function render(){
+function render(scroll=true){
   document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
   document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
   $('#lang').textContent=lang==='en'?'العربية':'English';
@@ -396,23 +396,24 @@ function render(){
   const page=h.startsWith('category')?'category':h.startsWith('product')?'product':'home';
   $('#view').innerHTML=page==='category'?category():page==='product'?product():home();
   document.querySelectorAll('nav.main a').forEach((a,i)=>a.toggleAttribute('aria-current',page==='category'&&i===0));
-  if(page==='category'){const s=$('#sort');s.value=sortMode;s.onchange=()=>{sortMode=s.value;render()};}
+  if(page==='category'){const s=$('#sort');s.value=sortMode;s.onchange=()=>{sortMode=s.value;render(false)};}
+  if(!scroll)return;
   if(h.startsWith('home-')){const el=document.getElementById(h);el&&el.scrollIntoView();}
   else window.scrollTo(0,0);
 }
 document.addEventListener('click',e=>{
   if(e.target.closest('[data-add]')){cart+=e.target.closest('.pd')?qty:1;$('#count').textContent=cart;toast(t('added'));}
-  const b=e.target.closest('[data-band]'); if(b){band=b.dataset.band;render();}
+  const b=e.target.closest('[data-band]'); if(b){band=b.dataset.band;render(false);}
   const q=e.target.closest('[data-q]'); if(q){qty=Math.max(1,qty+ +q.dataset.q);$('#q').textContent=qty;}
 });
 document.addEventListener('change',e=>{if(e.target.name==='opt'){opt=+e.target.value;$('#pprice').textContent=money(KAIF_OPTS[opt].price);}});
-$('#lang').onclick=()=>{lang=lang==='en'?'ar':'en';render();};
+$('#lang').onclick=()=>{const y=scrollY;lang=lang==='en'?'ar':'en';render(false);window.scrollTo({top:y,behavior:'instant'});};
 $('#cartbtn').onclick=()=>toast(t('added'));
 const mt=document.querySelector('.menu-toggle');
 mt.onclick=()=>{const n=$('#nav');n.classList.toggle('open');mt.setAttribute('aria-expanded',n.classList.contains('open'));};
 $('#nav').addEventListener('click',()=>{$('#nav').classList.remove('open');mt.setAttribute('aria-expanded','false');});
 let tt;function toast(m){const x=$('#toast');x.textContent=m;x.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>x.classList.remove('show'),2600);}
-window.addEventListener('hashchange',render);
+window.addEventListener('hashchange',()=>render(true));
 render();
 </script>
 </body>
