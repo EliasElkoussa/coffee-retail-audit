@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Al Gahwa Al Arabiya — Digital Growth &amp; UX Audit</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --roast:#2A1710; --bean:#4A2C20; --cardamom:#5E7349; --saffron:#C2861A; --slate:#56677A;
+  --paper:#FAFAF7; --card:#FFFFFF; --line:#E4E0D8; --muted:#6F655C;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--roast);font:17px/1.65 "IBM Plex Sans Arabic",system-ui,sans-serif}
+a{color:var(--bean)}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",sans-serif;line-height:1.2;margin:0}
+p{margin:0 0 14px}
+
+/* hero */
+.hero{background:var(--bean);color:#F5EFE8}
+.hero .in{max-width:1120px;margin:0 auto;padding:56px 24px 48px}
+.hero .who{color:#D9C7B6;font-size:15px;margin-bottom:28px}
+.hero .who strong{color:#F5EFE8}
+.big{font-family:"Reem Kufi";font-weight:700;font-size:clamp(46px,9vw,112px);line-height:1;margin:0}
+.big span{display:block}
+.big .two{color:#E9C98C}
+.hero .cap{font-size:18px;max-width:58ch;margin:24px 0 0;color:#E6DCD1}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;border-radius:999px;padding:12px 22px;font-weight:600;text-decoration:none}
+.btn.primary{background:var(--saffron);color:var(--roast)}
+.btn.ghost{color:#F5EFE8;border:1px solid #8C6B5B}
+
+/* layout */
+.layout{max-width:1120px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:220px 1fr;gap:48px}
+aside{position:sticky;top:20px;align-self:start}
+aside nav a{display:block;padding:6px 10px;border-radius:6px;text-decoration:none;color:var(--roast);font-size:15px}
+aside nav a:hover{background:#F1EEE8}
+aside .filter{margin-top:24px;border-top:1px solid var(--line);padding-top:16px}
+aside .filter p{font-weight:600;font-size:15px;margin-bottom:8px}
+.fbtn{display:flex;align-items:center;gap:8px;width:100%;border:1px solid var(--line);background:var(--card);border-radius:6px;padding:7px 10px;margin-bottom:6px;font:inherit;font-size:15px;cursor:pointer;text-align:start}
+.fbtn[aria-pressed="true"]{border-color:var(--roast);box-shadow:inset 0 0 0 1px var(--roast)}
+@media (max-width:900px){.layout{grid-template-columns:1fr;gap:20px}aside{position:static}aside nav{display:flex;flex-wrap:wrap;gap:4px}.filter{display:flex;flex-wrap:wrap;gap:6px}.filter p{width:100%}.fbtn{width:auto}}
+
+main section{margin-bottom:56px;scroll-margin-top:20px}
+main h2{font-size:32px;margin-bottom:8px}
+.lead{font-size:19px;color:var(--roast);max-width:64ch}
+.sum{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.sum li{background:var(--card);border:1px solid var(--line);border-inline-start:4px solid var(--bean);border-radius:8px;padding:14px 18px}
+.sum li strong{display:block;font-family:"Reem Kufi";font-size:19px;margin-bottom:2px}
+
+/* labels */
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.tag::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.v{color:var(--cardamom);background:#EEF1E8}.h{color:#8A5D0F;background:#F8EFDC}.x{color:var(--slate);background:#ECEFF2}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+
+/* pillars */
+details.pillar{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:14px}
+details.pillar>summary{list-style:none;cursor:pointer;padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:start}
+details.pillar>summary::-webkit-details-marker{display:none}
+summary h3{font-size:24px}
+summary .one{grid-column:1/-1;color:var(--muted);margin:0}
+summary .chev{width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:transform .2s}
+details[open] summary .chev{transform:rotate(180deg)}
+.pbody{padding:0 22px 22px;border-top:1px solid var(--line)}
+.pbody h4{font-family:"Reem Kufi";font-size:18px;margin:20px 0 8px;font-weight:600}
+.items{list-style:none;padding:0;margin:0}
+.items li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.items li:last-child{border-bottom:0}
+.items .tag{margin-top:3px}
+.fix{margin:0;padding-inline-start:20px}
+.fix li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 4px}
+th,td{text-align:start;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:#F6F4EF}
+.tw{overflow-x:auto}
+code{font-size:.9em;background:#F1EEE8;padding:1px 5px;border-radius:4px}
+
+/* steps */
+.steps{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;counter-reset:s}
+.steps li{counter-increment:s;background:#F6F4EF;border-radius:10px;padding:14px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--bean);color:#fff;font-weight:600;margin-bottom:8px}
+.steps strong{display:block}
+@media (max-width:700px){.steps{grid-template-columns:1fr 1fr}}
+
+.demo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+@media (max-width:700px){.demo{grid-template-columns:1fr}}
+.open li{margin-bottom:6px}
+.src{font-size:15px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:24px;text-align:center}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="in">
+  <p class="who">Digital Growth and User Experience Audit for <strong>Al Gahwa Al Arabiya</strong>, prepared by <strong>Elias Elkoussa</strong>, 4 November 2026</p>
+  <h1 class="big"><span>10,540 sold.</span><span class="two">0 reviews.</span></h1>
+  <p class="cap">That is Al Kaif Coffee on the store today. The demand is proven and the tracking is in place. What's missing is a storefront that turns that demand into measurable sales, in English and in Arabic.</p>
+  <div class="actions"><a class="btn primary" href="demo.html">Open the concept storefront</a><a class="btn ghost" href="#summary">Read the summary</a></div>
+</div></header>
+
+<div class="layout">
+<aside>
+  <nav aria-label="Sections">
+    <a href="#summary">Summary</a>
+    <a href="#p1">1. Localization and SEO</a>
+    <a href="#p2">2. Homepage and navigation</a>
+    <a href="#p3">3. Mobile performance</a>
+    <a href="#p4">4. Tracking and data</a>
+    <a href="#p5">5. Trust and checkout</a>
+    <a href="#p6">6. Media strategy</a>
+    <a href="#demo">Concept storefront</a>
+    <a href="#next">Open items</a>
+  </nav>
+  <div class="filter" role="group" aria-label="Show findings">
+    <p>Show findings</p>
+    <button class="fbtn" data-f="all" aria-pressed="true">All</button>
+    <button class="fbtn" data-f="v" aria-pressed="false"><span class="tag v">Verified</span></button>
+    <button class="fbtn" data-f="h" aria-pressed="false"><span class="tag h">Hypothesis</span></button>
+    <button class="fbtn" data-f="x" aria-pressed="false"><span class="tag x">To verify</span></button>
+  </div>
+</aside>
+
+<main>
+<section id="summary">
+  <h2>Summary</h2>
+  <p class="lead">Six findings shape the plan. Each one is labelled so you can see what was observed and what is proposed.</p>
+  <div class="legend">
+    <span class="tag v">Verified</span><span>observed on the live site or in Google PageSpeed Insights on 4 Nov 2026</span>
+  </div>
+  <div class="legend">
+    <span class="tag h">Hypothesis</span><span>a position to test; no results are claimed</span>
+  </div>
+  <div class="legend">
+    <span class="tag x">To verify</span><span>needs store-admin or ad-account access</span>
+  </div>
+  <ul class="sum">
+    <li><strong>Demand is proven</strong>Core Arabic coffee products show between 9,441 and 10,540 units sold each on their product cards.</li>
+    <li><strong>The English storefront is half-built</strong>Menus, section headings and some products stay in Arabic on the English site, and several product records are crossed.</li>
+    <li><strong>The homepage is a catalogue, not a funnel</strong>218 product links, with the same items repeated across sections.</li>
+    <li><strong>Trust is under-signalled</strong>53 "No reviews" labels on the homepage, and a shipping page with no cities or charges.</li>
+    <li><strong>Tracking is installed but not proven clean</strong>GA4, Tag Manager, Meta, TikTok and Snapchat tags are all on the site, so the priority is data quality. Red flag: an event called <code>ads_conversion</code> fires when a shopper simply opens a product page. If Google Ads counts it as a conversion, reported return on ad spend is inflated and bidding learns from browsers, not buyers.</li>
+    <li><strong>Speed is a risk, not the headline problem</strong>Real visitors pass Google's Core Web Vitals on mobile, but the site scores 31/100 in Google's simulated mobile test. New visitors from paid campaigns may get the slower experience.</li>
+  </ul>
+</section>
+
+<section id="p1">
+<details class="pillar" open>
+  <summary><h3>1. Localization and SEO integrity</h3><span class="chev" aria-hidden="true">⌄</span>
+    <p class="one">The English toggle translates product names but not the structure around them.</p></summary>
+  <div class="pbody">
+    <h4>What we found</h4>
+    <ul class="items">
+      <li data-k="v"><span class="tag v">Verified</span><span>9 of 12 main menu items are Arabic-only on the English site, including Gift Boxes, Arabic Coffee, Specialty Coffee, Wholesale and Events.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Most homepage section headings are Arabic-only, and a leftover template placeholder ("نص فرعي", meaning "subtext") is visible.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Some products have no English name, and the best-selling Al Kaif Coffee shows "No description".</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Product records are crossed in the specialty range. One page's web address names Al Dhafra Fort Blend, its heading says Nicaragua Momotombo, and its Google title says Gedeb Halo Hartome. Two more carry English names that don't match their web addresses.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>The page at /en-ae/ points its canonical tag at /en/, and the language tags omit /en-ae/. Two English addresses compete for one page.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>The homepage has no main (H1) heading, and category web addresses are Arabic-only.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>The store description says nine UAE branches plus two in Oman; the homepage lists eight locations.</span></li>
+    </ul>
+    <h4>Why it matters commercially</h4>
+    <p>Every Arabic-only step is a point where an English-interface shopper can drop out, and every English ad click lands on a page that only half-matches the ad. That raises cost per acquisition before any media optimisation starts. Crossed product records also send the wrong product to Google and the ad catalogues.</p>
+    <h4>What to fix</h4>
+    <ul class="fix">
+      <li>Complete Zid's English fields for menus, categories, section headings and every product name and description.</li>
+      <li>Audit every product so its name, web address, Google title and photo describe the same item.</li>
+      <li>Settle on one English address (/en/ or /en-ae/), make it self-canonical and list it in the language tags beside the Arabic version.</li>
+      <li>Add one main heading per page in each language, and correct the branch count everywhere.</li>
+    </ul>
+  </div>
+</details>
+</section>
+
+<section id="p2">
+<details class="pillar">
+  <summary><h3>2. Homepage and navigation</h3><span class="chev" aria-hidden="true">⌄</span>
+    <p class="one">The homepage lists most of the catalogue instead of guiding a shopper to a first purchase.</p></summary>
+  <div class="pbody">
+    <h4>What we found</h4>
+    <ul class="items">
+      <li data-k="v"><span class="tag v">Verified</span><span>The homepage carries 218 links to product pages.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Ceylon Coffee, Al Majlis Coffee and the logo cup set each appear in at least three homepage sections.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>12 top-level menu items mix products (coffee, honey, dry food), services (gift wrapping, events) and wholesale.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Two homepage sections display "No products".</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Al Kaif lists at AED 95 on cards but its product page opened at AED 115 (1 kg with saffron).</span></li>
+    </ul>
+    <h4>Why it matters commercially</h4>
+    <p>A shopper arriving from an ad has to scan a long, repetitive page to find a first product. Less clarity means fewer add-to-carts per visit, which lowers the return on every dirham of media.</p>
+    <h4>What to fix</h4>
+    <ul class="fix">
+      <li>Homepage order: one hero offer, then four category tiles, best sellers ranked by real sales, gift boxes, branches.</li>
+      <li>Group the menu into Coffee, Tools, Gifts, Pantry and Business (wholesale, events).</li>
+      <li>Remove empty sections and duplicate product rows; open product pages on the variant that matches the card price.</li>
+    </ul>
+  </div>
+</details>
+</section>
+
+<section id="p3">
+<details class="pillar">
+  <summary><h3>3. Mobile performance</h3><span class="chev" aria-hidden="true">⌄</span>
+    <p class="one">Real visitors pass on mobile today; the risk sits with new visitors from paid campaigns.</p></summary>
+  <div class="pbody">
+    <h4>Real-visitor data (Chrome UX Report, last 28 days)</h4>
+    <div class="tw"><table>
+      <thead><tr><th>Measure</th><th>Result</th><th>Google rating</th></tr></thead>
+      <tbody>
+        <tr><td>Core Web Vitals assessment</td><td>Passed</td><td>—</td></tr>
+        <tr><td>Largest Contentful Paint</td><td>2.3 s</td><td>Good</td></tr>
+        <tr><td>Interaction to Next Paint</td><td>125 ms</td><td>Good</td></tr>
+        <tr><td>Cumulative Layout Shift</td><td>0.01</td><td>Good</td></tr>
+        <tr><td>Time to First Byte</td><td>1.6 s</td><td>Above the 0.8 s "good" threshold</td></tr>
+      </tbody></table></div>
+    <ul class="items">
+      <li data-k="v"><span class="tag v">Verified</span><span>Simulated mobile test: performance score 31/100, Largest Contentful Paint 12.4 s, Total Blocking Time 1,130 ms, layout shift 0.261. Accessibility 70, Best Practices 73, SEO 85.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>The page disables pinch-to-zoom, an accessibility failure for older shoppers and gift buyers.</span></li>
+      <li data-k="h"><span class="tag h">Hypothesis</span><span>Paid campaigns pull in new visitors on mid-range phones and weaker connections, who may sit closer to the lab result than the current visitor mix. Speed should be tested on ad traffic, not assumed fine.</span></li>
+    </ul>
+    <h4>What to fix</h4>
+    <ul class="fix">
+      <li>Compress and size homepage images, and load fewer product rows at first.</li>
+      <li>Defer non-essential scripts and review whether all five marketing tags must load immediately.</li>
+      <li>Re-enable zoom.</li>
+    </ul>
+  </div>
+</details>
+</section>
+
+<section id="p4">
+<details class="pillar">
+  <summary><h3>4. Tracking and data infrastructure</h3><span class="chev" aria-hidden="true">⌄</span>
+    <p class="one">The tags are installed everywhere. The job is to prove the data is clean.</p></summary>
+  <div class="pbody">
+    <div class="tw"><table>
+      <thead><tr><th>Tag</th><th>Installed</th><th>Seen firing in the test</th></tr></thead>
+      <tbody>
+        <tr><td>Google Tag Manager</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Google Analytics 4</td><td>Yes</td><td>page_view, scroll, view_item, add_to_cart</td></tr>
+        <tr><td>Meta Pixel</td><td>Yes, loaded and initialised</td><td>Not visible from the browser test</td></tr>
+        <tr><td>TikTok Pixel</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Snapchat Pixel</td><td>Yes</td><td>Yes</td></tr>
+      </tbody></table></div>
+    <ul class="items">
+      <li data-k="v"><span class="tag v">Verified</span><span>A GA4 event called <code>ads_conversion</code> fires when a shopper merely opens a product page.</span></li>
+      <li data-k="h"><span class="tag h">Hypothesis</span><span>If <code>ads_conversion</code> is imported into Google Ads as a conversion, campaigns optimise toward page views and report inflated return on ad spend. Every platform's bidding learns from these events, so a noisy signal trains it on the wrong customers.</span></li>
+      <li data-k="x"><span class="tag x">To verify</span><span>Whether Meta receives view content, add to cart and purchase events, and how each ad account's conversions are configured.</span></li>
+    </ul>
+    <h4>What to fix</h4>
+    <ul class="fix">
+      <li>Audit each ad account's conversion settings against the events actually firing.</li>
+      <li>Confirm the full funnel (view, add to cart, begin checkout, purchase) fires once per action, with order value, on Google, Meta and TikTok.</li>
+      <li>Add server-side event sending where Zid supports it.</li>
+    </ul>
+  </div>
+</details>
+</section>
+
+<section id="p5">
+<details class="pillar">
+  <summary><h3>5. Trust signals and checkout friction</h3><span class="chev" aria-hidden="true">⌄</span>
+    <p class="one">Strong proof of demand, hidden behind empty reviews and an empty shipping page.</p></summary>
+  <div class="pbody">
+    <ul class="items">
+      <li data-k="v"><span class="tag v">Verified</span><span>53 "No reviews" labels on the homepage, next to cards showing 9,000+ units sold.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>The Payment and Delivery page shows column headers (cities covered, shipping charges) with no rows.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Payment options shown: Apple Pay, Visa, Mastercard, Amex and cash via store courier. No buy-now-pay-later option is visible.</span></li>
+      <li data-k="v"><span class="tag v">Verified</span><span>Product pages show a "people viewing this product" counter whose source can't be verified from outside.</span></li>
+      <li data-k="x"><span class="tag x">To verify</span><span>Whether shoppers can check out without creating an account.</span></li>
+    </ul>
+    <h4>Why it matters commercially</h4>
+    <p>Shipping cost and delivery time are what a first-time buyer needs to know before checkout. Leaving them blank pushes that buyer to abandon, or to message the store instead.</p>
+    <h4>What to fix</h4>
+    <ul class="fix">
+      <li>Publish delivery zones, fees, any free-shipping threshold and delivery times, in both languages.</li>
+      <li>Invite reviews after delivery, and show ratings on product cards.</li>
+      <li>Show payment options on product pages and in the cart; assess buy-now-pay-later for tools and gift boxes.</li>
+      <li>Keep loyalty points and gift wrapping visible; use only urgency counters based on real data.</li>
+    </ul>
+  </div>
+</details>
+</section>
+
+<section id="p6">
+<details class="pillar">
+  <summary><h3>6. Media strategy</h3><span class="chev" aria-hidden="true">⌄</span>
+    <p class="one">Three platforms, automated catalogue campaigns, a simple structure, and scale only what the data proves.</p></summary>
+  <div class="pbody">
+    <ul class="items"><li data-k="h"><span class="tag h">Hypothesis</span><span>This whole section is a position to test on the fixed website. No budgets or results are claimed.</span></li></ul>
+
+    <h4>Platform selection</h4>
+    <p><strong>Google</strong> (Search, Shopping and YouTube through Performance Max), <strong>Meta</strong> (Instagram and Facebook) and <strong>TikTok</strong>. Together they cover search intent and the main discovery feeds, and each has an automated campaign type built for a product catalogue. Adding channels before these are proven would split budget and learning. Once sales justify it, the next step is content, creator and affiliate partnerships, before any new ad channel. UAE first; the wider GCC once delivery outside the UAE is confirmed.</p>
+
+    <h4>Setup per platform</h4>
+    <p>Starts only once the website fixes are live, because catalogues and tracking read directly from the site.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Platform</th><th>Product catalogue</th><th>Tracking checks</th></tr></thead>
+      <tbody>
+        <tr><td>Google</td><td>Merchant Center feed with names, descriptions, prices, stock and shipping in English and Arabic</td><td>GA4 purchase with order value; Google Ads conversions reviewed, <code>ads_conversion</code> removed as a goal</td></tr>
+        <tr><td>Meta</td><td>Commerce Manager catalogue from the same product data</td><td>Pixel plus Conversions API, each event counted once</td></tr>
+        <tr><td>TikTok</td><td>TikTok catalogue from the same product data</td><td>Pixel plus Events API, same events</td></tr>
+      </tbody></table></div>
+    <p>Across all three: one naming and tagging convention on every ad, and GA4 as the common yardstick. Zid's ability to sync catalogues and send events to all three platforms needs to be explored; if it doesn't work reliably, that part of the setup gets changed.</p>
+
+    <h4>Audiences, simplified</h4>
+    <p>Today's automated campaigns find buyers from conversion data and the catalogue rather than hand-built interest lists, so the plan is organised by product category. Broad, always-on ad groups for Arabic coffee, specialty coffee, coffee tools and gifts run inside Performance Max (Google), Advantage+ sales campaigns (Meta) and Smart+ Web Campaigns with Catalog Ads (TikTok). These rotate products automatically. English and Arabic ads run in the same campaigns, each landing on the page in its own language.</p>
+
+    <h4>Campaign structure</h4>
+    <ol class="steps">
+      <li><strong>Ready</strong>Site fixes live, tracking verified, catalogues approved.</li>
+      <li><strong>Test</strong>One automated sales campaign per platform, low daily budgets, left alone through the learning phase.</li>
+      <li><strong>Read</strong>Compare the three platforms on the measures below.</li>
+      <li><strong>Scale</strong>Move budget to what works, raise it gradually, then extend to the GCC.</li>
+    </ol>
+
+    <h4>What gets evaluated</h4>
+    <div class="tw"><table>
+      <thead><tr><th>Question</th><th>Measures</th></tr></thead>
+      <tbody>
+        <tr><td>Where does traffic come from, and is it good?</td><td>Visits by platform and campaign, engaged visits, bounce</td></tr>
+        <tr><td>Where do visitors spend time?</td><td>Category and product views, scroll depth, time on page</td></tr>
+        <tr><td>Which conversions are driven?</td><td>Add to cart, checkout starts, purchases, order value, return on ad spend</td></tr>
+        <tr><td>Where do buyers come from?</td><td>Emirate or country, device, site language, new or returning</td></tr>
+      </tbody></table></div>
+    <p>The results then decide the next move: different audiences (least likely, given how the platforms work today), more creative variety including creators and influencers, pricing and offers, or retargeting visitors who didn't buy. Success targets are set from the test baseline, not before.</p>
+  </div>
+</details>
+</section>
+
+<section id="demo">
+  <h2>Concept storefront</h2>
+  <div class="demo">
+    <div>
+      <p class="lead" style="margin-bottom:8px">A three-page mockup showing the fixes in place: home, the Arabic coffee category and the Al Kaif Coffee product page, with a working English and Arabic switch.</p>
+      <p style="margin:0;color:var(--muted)">Built with the store's own photos, names and prices from 4 Nov 2026. Descriptions, reviews and delivery details are left as marked slots for the brand to fill. No orders are taken.</p>
+    </div>
+    <a class="btn primary" href="demo.html">Open the storefront</a>
+  </div>
+</section>
+
+<section id="next">
+  <h2>Open items</h2>
+  <ul class="open">
+    <li>Guest checkout: whether a shopper can buy without creating an account.</li>
+    <li>Meta Pixel: whether view content, add to cart and purchase reach Meta.</li>
+    <li>Google Ads: whether <code>ads_conversion</code> is set up as a conversion.</li>
+    <li>Zid: English web addresses, catalogue sync, server-side events and buy-now-pay-later options.</li>
+    <li>Correct branch count, and whether the online store delivers outside the UAE.</li>
+    <li>The same checks on the Arabic storefront.</li>
+  </ul>
+  <p class="src">Sources: <a href="https://algahwaalarabiya.ae/en-ae/">algahwaalarabiya.ae</a>, <a href="https://pagespeed.web.dev/analysis/https-algahwaalarabiya-ae-en-ae/dsv5gljpu7?form_factor=mobile">PageSpeed Insights mobile report</a>, <a href="https://ads.tiktok.com/help/article/about-smart-plus-web-campaigns">TikTok Smart+ Web Campaigns</a>. All checks run on 4 November 2026.</p>
+</section>
+</main>
+</div>
+
+<footer>Prepared by Elias Elkoussa for Al Gahwa Al Arabiya management. Store content and imagery belong to Al Gahwa Al Arabiya.</footer>
+
+<script>
+const btns=document.querySelectorAll('.fbtn');
+btns.forEach(b=>b.addEventListener('click',()=>{
+  const f=b.dataset.f;
+  btns.forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('.items li').forEach(li=>li.classList.toggle('hide',f!=='all'&&li.dataset.k!==f));
+  if(f!=='all')document.querySelectorAll('details.pillar').forEach(d=>d.open=true);
+}));
+document.querySelectorAll('aside nav a').forEach(a=>a.addEventListener('click',()=>{
+  const d=document.querySelector(a.getAttribute('href')+' details'); if(d)d.open=true;
+}));
+</script>
+</body>
+</html>
